@@ -202,7 +202,9 @@ void rotate_around_x(const float theta, const cube q, cube o) {
 // Determine if a quadrilateral contains a given edge vertex
 int contains_edge_vertex(const quad3 q, const vec3 v) {
   for (unsigned i = 0; i < 4; ++i) {
-    if (q[i][0] == v[0] && q[i][1] == v[1] && q[i][2] == v[2]) return 1;
+    if (fabsf(q[i][0] - v[0]) < 0.01f &&
+        fabsf(q[i][1] - v[1]) < 0.01f &&
+        fabsf(q[i][2] - v[2]) < 0.01f) return 1;
   }
   return 0;
 }
